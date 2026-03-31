@@ -226,12 +226,13 @@ const problemas = [
 function ProblemaSection() {
   return (
     <section id="problema" className="py-16 md:py-32">
-      <GlowCard customSize glowColor="blue" className="mx-auto max-w-3xl lg:max-w-5xl px-6 !grid-rows-none !p-0 !gap-0 !shadow-none !backdrop-blur-none rounded-xl">
+      <div className="mx-auto max-w-3xl lg:max-w-5xl px-6">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl">O problema não é só gerar lead</h2>
           <p className="text-muted-foreground mt-4">O que trava o resultado é o que acontece depois que o lead chega.</p>
         </div>
-        <div className="relative z-10 grid grid-cols-6 gap-3">
+        <GlowCard customSize glowColor="red" className="!grid-rows-none !p-4 !gap-3 !shadow-none rounded-xl">
+          <div className="relative z-10 grid grid-cols-6 gap-3">
           <Card className="relative col-span-full overflow-hidden lg:col-span-3">
             <CardContent className="grid pt-6 sm:grid-cols-2">
               <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
@@ -311,8 +312,9 @@ function ProblemaSection() {
               </div>
             </CardContent>
           </Card>
-        </div>
-      </GlowCard>
+          </div>
+        </GlowCard>
+      </div>
     </section>
   )
 }
@@ -324,12 +326,13 @@ function ProblemaSection() {
 function BeneficiosSection() {
   return (
     <section className="py-16 md:py-32">
-      <GlowCard customSize glowColor="blue" className="mx-auto max-w-3xl lg:max-w-5xl px-6 !grid-rows-none !p-0 !gap-0 !shadow-none !backdrop-blur-none rounded-xl">
+      <div className="mx-auto max-w-3xl lg:max-w-5xl px-6">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl">O que você ganha com isso</h2>
           <p className="text-muted-foreground mt-4">Uma operação comercial que funciona com mais processo e menos improviso.</p>
         </div>
-        <div className="relative z-10 grid grid-cols-6 gap-3">
+        <GlowCard customSize glowColor="blue" className="!grid-rows-none !p-4 !gap-3 !shadow-none rounded-xl">
+          <div className="relative z-10 grid grid-cols-6 gap-3">
           <Card className="relative col-span-full flex overflow-hidden lg:col-span-2">
             <CardContent className="relative m-auto size-fit pt-6">
               <div className="relative flex h-24 w-56 items-center">
@@ -404,8 +407,9 @@ function BeneficiosSection() {
               </div>
             </CardContent>
           </Card>
-        </div>
-      </GlowCard>
+          </div>
+        </GlowCard>
+      </div>
     </section>
   )
 }
@@ -490,7 +494,7 @@ function DiferenciaisSection() {
 
   return (
     <section className="py-16 md:py-32">
-      <GlowCard customSize glowColor="blue" className="mx-auto w-full max-w-5xl space-y-8 px-4 !grid-rows-none !p-0 !gap-0 !shadow-none !backdrop-blur-none rounded-xl">
+      <div className="mx-auto w-full max-w-5xl space-y-8 px-4">
         <AnimatedContainer shouldReduceMotion={shouldReduceMotion} className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-wide text-balance md:text-4xl lg:text-5xl xl:font-extrabold">
             Por que a Merkai é diferente
@@ -500,12 +504,14 @@ function DiferenciaisSection() {
           </p>
         </AnimatedContainer>
 
-        <AnimatedContainer shouldReduceMotion={shouldReduceMotion} delay={0.4} className="grid grid-cols-1 divide-x divide-y divide-dashed border border-dashed sm:grid-cols-2 md:grid-cols-3">
-          {differentials.map((feature, i) => (
-            <FeatureCard key={i} feature={feature} />
-          ))}
-        </AnimatedContainer>
-      </GlowCard>
+        <GlowCard customSize glowColor="purple" className="!grid-rows-none !p-0 !gap-0 !shadow-none rounded-xl">
+          <AnimatedContainer shouldReduceMotion={shouldReduceMotion} delay={0.4} className="grid grid-cols-1 divide-x divide-y divide-dashed border border-dashed sm:grid-cols-2 md:grid-cols-3">
+            {differentials.map((feature, i) => (
+              <FeatureCard key={i} feature={feature} />
+            ))}
+          </AnimatedContainer>
+        </GlowCard>
+      </div>
     </section>
   )
 }
@@ -857,8 +863,8 @@ export default function V2Page() {
   return (
     <FormContext.Provider value={{ openForm }}>
       <HeroSection />
-      <div className="relative bg-black">
-        <BGPattern variant="dots" mask="none" size={24} fill="#1f1f1f" />
+      <div className="relative bg-background">
+        <BGPattern variant="dots" mask="none" size={24} fill="#1a1a1a" />
         <ProblemaSection />
         <BeneficiosSection />
         <ComoFuncionaSection />
