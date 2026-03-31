@@ -7,10 +7,6 @@ type FeatureType = {
 	description: string;
 };
 
-type FeatureCardProps = React.ComponentProps<'div'> & {
-	feature: FeatureType;
-};
-
 const STATIC_PATTERNS: number[][][] = [
 	[[7,1],[9,3],[8,5],[10,2],[7,4]],
 	[[8,2],[10,4],[7,6],[9,1],[8,3]],
