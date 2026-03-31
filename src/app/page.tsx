@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 import { Button } from '@/components/ui/button'
 import { AnimatedGroup } from '@/components/ui/animated-group'
-import { InfiniteGrid } from '@/components/ui/infinite-grid'
+import { GlowCard } from '@/components/ui/spotlight-card'
 import { Feature108 } from '@/components/ui/feature108'
 import { FeatureCard } from '@/components/ui/grid-feature-cards'
 import { TestimonialsColumn, type Testimonial } from '@/components/ui/testimonials-columns'
@@ -225,8 +225,8 @@ const problemas = [
 
 function ProblemaSection() {
   return (
-    <section id="problema" className="py-16 md:py-32 dark:bg-transparent">
-      <div className="mx-auto max-w-3xl lg:max-w-5xl px-6">
+    <section id="problema" className="py-16 md:py-32">
+      <GlowCard customSize glowColor="blue" className="mx-auto max-w-3xl lg:max-w-5xl px-6 !grid-rows-none !p-0 !gap-0 !shadow-none !backdrop-blur-none rounded-xl">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl">O problema não é só gerar lead</h2>
           <p className="text-muted-foreground mt-4">O que trava o resultado é o que acontece depois que o lead chega.</p>
@@ -312,7 +312,7 @@ function ProblemaSection() {
             </CardContent>
           </Card>
         </div>
-      </div>
+      </GlowCard>
     </section>
   )
 }
@@ -323,8 +323,8 @@ function ProblemaSection() {
 
 function BeneficiosSection() {
   return (
-    <section className="py-16 md:py-32 dark:bg-transparent">
-      <div className="mx-auto max-w-3xl lg:max-w-5xl px-6">
+    <section className="py-16 md:py-32">
+      <GlowCard customSize glowColor="blue" className="mx-auto max-w-3xl lg:max-w-5xl px-6 !grid-rows-none !p-0 !gap-0 !shadow-none !backdrop-blur-none rounded-xl">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl">O que você ganha com isso</h2>
           <p className="text-muted-foreground mt-4">Uma operação comercial que funciona com mais processo e menos improviso.</p>
@@ -405,7 +405,7 @@ function BeneficiosSection() {
             </CardContent>
           </Card>
         </div>
-      </div>
+      </GlowCard>
     </section>
   )
 }
@@ -490,7 +490,7 @@ function DiferenciaisSection() {
 
   return (
     <section className="py-16 md:py-32">
-      <div className="mx-auto w-full max-w-5xl space-y-8 px-4">
+      <GlowCard customSize glowColor="blue" className="mx-auto w-full max-w-5xl space-y-8 px-4 !grid-rows-none !p-0 !gap-0 !shadow-none !backdrop-blur-none rounded-xl">
         <AnimatedContainer shouldReduceMotion={shouldReduceMotion} className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-wide text-balance md:text-4xl lg:text-5xl xl:font-extrabold">
             Por que a Merkai é diferente
@@ -505,7 +505,7 @@ function DiferenciaisSection() {
             <FeatureCard key={i} feature={feature} />
           ))}
         </AnimatedContainer>
-      </div>
+      </GlowCard>
     </section>
   )
 }
@@ -536,13 +536,13 @@ function AnimatedContainer({ className, delay = 0.1, children, shouldReduceMotio
    ============================================================ */
 
 const testimonials: Testimonial[] = [
-  { text: 'Saímos de R$ 9 mil pra R$ 125 mil em tráfego em menos de um ano. O ROI se pagou várias vezes. Sem a estrutura que montaram, não teria sido possível.', name: 'Kauê Oliveira', role: 'CEO — Polozi in Company', imageSrc: '/assets/fotoPerfil-CEOPolozi.png' },
+  { text: 'Saímos de R$ 9 mil pra R$ 125 mil em tráfego em menos de um ano. O ROI se pagou várias vezes. Sem a estrutura que montaram, não teria sido possível.', name: 'José Carlos Polozi', role: 'CEO — Polozi in Company', imageSrc: '/assets/fotoPerfil-CEOPolozi.png' },
   { text: 'Conheço o Thiago de longa data. Ele nos ajudou na Taket atendendo projetos de multinacionais como Syngenta, Gerdau e Tranenge.', name: 'Beto Cristian', role: 'Sócio-fundador — Taket', imageSrc: '/assets/BetoCristianSocioFundadorTaket.png' },
   { text: 'A IA cortou investimento em tráfego e aumentou a receita. Parece mágica, mas é processo bem feito.', name: 'Gibinha', role: 'Proprietária — Pousada da Gibinha', imageSrc: '/assets/fotoPerfilGibinhaDaPousada.png' },
   { text: 'Batemos meta de vendas por vários meses consecutivos em parceria com a Merkai.', name: 'Paola Cardoso', role: 'Líder Comercial', imageSrc: '/assets/PaolaCardosoLiderComercial.png' },
   { text: 'Conseguimos reduzir a equipe de 8 pra 5 pessoas sem perder qualidade. O agente de IA assumiu a triagem e funcionou de verdade.', name: 'Juan Murilo', role: 'Founder — Posgrado Med', imageSrc: '/assets/FotoPerfilJuanMuriloFounderPosgrado.png' },
   { text: 'O projeto de treinamento de IA na plataforma Medtask foi um sucesso.', name: 'Vinicius Takatsu', role: 'CEO — Medtask', imageSrc: '/assets/ViniciusTakatsuCEOmedtask.png' },
-  { text: 'Antes a gente perdia lead sem nem saber. Depois que estruturaram o CRM, ficou claro onde estava o gargalo.', name: 'Kauê Oliveira', role: 'CEO — Polozi in Company', imageSrc: '/assets/fotoPerfil-CEOPolozi.png' },
+  { text: 'Antes a gente perdia lead sem nem saber. Depois que estruturaram o CRM, ficou claro onde estava o gargalo.', name: 'José Carlos Polozi', role: 'CEO — Polozi in Company', imageSrc: '/assets/fotoPerfil-CEOPolozi.png' },
   { text: 'O comercial agora funciona com processo. Cada lead tem um caminho claro, nada se perde no meio.', name: 'Gibinha', role: 'Proprietária — Pousada da Gibinha', imageSrc: '/assets/fotoPerfilGibinhaDaPousada.png' },
   { text: 'Marketing e vendas pararam de trabalhar separados. Isso sozinho já mudou nosso resultado.', name: 'Juan Murilo', role: 'Founder — Posgrado Med', imageSrc: '/assets/FotoPerfilJuanMuriloFounderPosgrado.png' },
 ]
@@ -708,12 +708,12 @@ function AntesDepoisSection() {
         </div>
         <ImageComparison className="aspect-16/9 w-full rounded-lg border" enableHover>
           <ImageComparisonImage
-            src="/assets/Antes.png"
+            src="/assets/imagemNovaAntes.png"
             alt="Antes — operação desorganizada"
             position="left"
           />
           <ImageComparisonImage
-            src="/assets/Depois.png"
+            src="/assets/imagemNovaDepois.png"
             alt="Depois — operação estruturada pela Merkai"
             position="right"
           />
@@ -857,11 +857,12 @@ export default function V2Page() {
   return (
     <FormContext.Provider value={{ openForm }}>
       <HeroSection />
-      <InfiniteGrid>
+      <div className="relative bg-black">
+        <BGPattern variant="dots" mask="none" size={24} fill="#1f1f1f" />
         <ProblemaSection />
         <BeneficiosSection />
         <ComoFuncionaSection />
-      </InfiniteGrid>
+      </div>
       <DiferenciaisSection />
       <FerramentasSection />
       <ProvaSocialSection />
