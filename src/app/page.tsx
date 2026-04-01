@@ -17,7 +17,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { BGPattern } from '@/components/ui/bg-pattern'
 import { Card, CardContent } from '@/components/ui/card'
 import { ImageComparison, ImageComparisonImage, ImageComparisonSlider } from '@/components/ui/image-comparison'
-import { Logos3 } from '@/components/ui/logos3'
 import { DottedSurface } from '@/components/ui/dotted-surface'
 import { EvervaultVisual } from '@/components/ui/evervault-card'
 import { DiagnosticoForm } from '@/components/ui/diagnostico-form'
@@ -159,7 +158,7 @@ function HeroSection() {
                     </div>
                   </Link>
 
-                  <h1 className="mt-8 max-w-4xl mx-auto text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem]">
+                  <h1 className="mt-8 max-w-4xl mx-auto text-balance text-4xl sm:text-5xl md:text-7xl lg:mt-16 xl:text-[5.25rem]">
                     Organize sua operação comercial e pare de perder leads
                   </h1>
                   <p className="mx-auto mt-8 max-w-2xl text-balance text-lg">
@@ -190,26 +189,6 @@ function HeroSection() {
       </DottedSurface>
     </>
   )
-}
-
-/* ============================================================
-   CARROSSEL DE FERRAMENTAS — Logos3
-   ============================================================ */
-
-const toolLogos = [
-  { id: 'n8n', description: 'n8n', image: '/logos/n8n.svg', className: 'h-7 w-auto' },
-  { id: 'supabase', description: 'Supabase', image: '/logos/supabase.svg', className: 'h-7 w-auto' },
-  { id: 'anthropic', description: 'Anthropic', image: '/logos/anthropic.svg', className: 'h-7 w-auto' },
-  { id: 'openai', description: 'OpenAI', image: '/logos/openai.svg', className: 'h-7 w-auto' },
-  { id: 'facebook', description: 'Facebook', image: '/logos/facebook.svg', className: 'h-7 w-auto' },
-  { id: 'instagram', description: 'Instagram', image: '/logos/instagram.svg', className: 'h-7 w-auto' },
-  { id: 'youtube', description: 'YouTube', image: '/logos/youtube.svg', className: 'h-7 w-auto' },
-  { id: 'whatsapp', description: 'WhatsApp', image: '/logos/whatsapp.svg', className: 'h-7 w-auto' },
-  { id: 'digitalocean', description: 'Digital Ocean', image: '/logos/digitalocean.svg', className: 'h-7 w-auto' },
-]
-
-function FerramentasSection() {
-  return <Logos3 heading="Ferramentas que usamos na operação" logos={toolLogos} />
 }
 
 /* ============================================================
@@ -246,7 +225,7 @@ function ProblemaSection() {
               </div>
               <div className="relative mt-6 flex items-center justify-center sm:mt-0 sm:ml-6">
                 <div className="text-center space-y-2">
-                  <span className="block text-5xl font-semibold text-destructive/80">78%</span>
+                  <span className="block text-3xl sm:text-5xl font-semibold text-destructive/80">78%</span>
                   <p className="text-sm text-muted-foreground">dos leads compram de quem responde primeiro</p>
                 </div>
               </div>
@@ -265,7 +244,7 @@ function ProblemaSection() {
               </div>
               <div className="relative mt-6 flex items-center justify-center sm:mt-0 sm:ml-6">
                 <div className="text-center space-y-2">
-                  <span className="block text-5xl font-semibold text-destructive/80">0</span>
+                  <span className="block text-3xl sm:text-5xl font-semibold text-destructive/80">0</span>
                   <p className="text-sm text-muted-foreground">padrão de qualificação definido</p>
                 </div>
               </div>
@@ -306,7 +285,7 @@ function ProblemaSection() {
               </div>
               <div className="relative mt-6 flex items-center justify-center sm:mt-0 sm:ml-6">
                 <div className="text-center space-y-2">
-                  <span className="block text-5xl font-semibold text-destructive/80">63%</span>
+                  <span className="block text-3xl sm:text-5xl font-semibold text-destructive/80">63%</span>
                   <p className="text-sm text-muted-foreground">das empresas não integram marketing e vendas</p>
                 </div>
               </div>
@@ -339,9 +318,9 @@ function BeneficiosSection() {
                 <svg className="text-muted absolute inset-0 size-full" viewBox="0 0 254 104" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M112.891 97.7022C140.366 97.0802 171.004 94.6715 201.087 87.5116C210.43 85.2881 219.615 82.6412 228.284 78.2473C232.198 76.3179 235.905 73.9942 239.348 71.3124C241.85 69.2557 243.954 66.7571 245.555 63.9408C249.34 57.3235 248.281 50.5341 242.498 45.6109C239.033 42.7237 235.228 40.2703 231.169 38.3054C219.443 32.7209 207.141 28.4382 194.482 25.534C184.013 23.1927 173.358 21.7755 162.64 21.2989C161.376 21.3512 160.113 21.181 158.908 20.796C158.034 20.399 156.857 19.1682 156.962 18.4535C157.115 17.8927 157.381 17.3689 157.743 16.9139C158.104 16.4588 158.555 16.0821 159.067 15.8066C160.14 15.4683 161.274 15.3733 162.389 15.5286C179.805 15.3566 196.626 18.8373 212.998 24.462C220.978 27.2494 228.798 30.4747 236.423 34.1232C240.476 36.1159 244.202 38.7131 247.474 41.8258C254.342 48.2578 255.745 56.9397 251.841 65.4892C249.793 69.8582 246.736 73.6777 242.921 76.6327C236.224 82.0192 228.522 85.4602 220.502 88.2924C205.017 93.7847 188.964 96.9081 172.738 99.2109C153.442 101.949 133.993 103.478 114.506 103.79C91.1468 104.161 67.9334 102.97 45.1169 97.5831C36.0094 95.5616 27.2626 92.1655 19.1771 87.5116C13.839 84.5746 9.1557 80.5802 5.41318 75.7725C-0.54238 67.7259 -1.13794 59.1763 3.25594 50.2827C5.82447 45.3918 9.29572 41.0315 13.4863 37.4319C24.2989 27.5721 37.0438 20.9681 50.5431 15.7272C68.1451 8.8849 86.4883 5.1395 105.175 2.83669C129.045 0.0992292 153.151 0.134761 177.013 2.94256C197.672 5.23215 218.04 9.01724 237.588 16.3889C240.089 17.3418 242.498 18.5197 244.933 19.6446C246.627 20.4387 247.725 21.6695 246.997 23.615C246.455 25.1105 244.814 25.5605 242.63 24.5811C230.322 18.9961 217.233 16.1904 204.117 13.4376C188.761 10.3438 173.2 8.36665 157.558 7.52174C129.914 5.70776 102.154 8.06792 75.2124 14.5228C60.6177 17.8788 46.5758 23.2977 33.5102 30.6161C26.6595 34.3329 20.4123 39.0673 14.9818 44.658C12.9433 46.8071 11.1336 49.1622 9.58207 51.6855C4.87056 59.5336 5.61172 67.2494 11.9246 73.7608C15.2064 77.0494 18.8775 79.925 22.8564 82.3236C31.6176 87.7101 41.3848 90.5291 51.3902 92.5804C70.6068 96.5773 90.0219 97.7419 112.891 97.7022Z" fill="currentColor" />
                 </svg>
-                <span className="mx-auto block w-fit text-5xl font-semibold">+rápido</span>
+                <span className="mx-auto block w-fit text-3xl sm:text-5xl font-semibold">+rápido</span>
               </div>
-              <h2 className="mt-6 text-center text-3xl font-semibold">Velocidade</h2>
+              <h2 className="mt-6 text-center text-2xl sm:text-3xl font-semibold">Velocidade</h2>
               <p className="text-foreground text-center mt-2">Resposta mais rápida, menos leads perdidos no caminho.</p>
             </CardContent>
           </Card>
@@ -401,7 +380,7 @@ function BeneficiosSection() {
               </div>
               <div className="relative mt-6 flex items-center justify-center sm:mt-0 sm:ml-6">
                 <div className="text-center space-y-2">
-                  <span className="block text-5xl font-semibold text-primary/80">2x</span>
+                  <span className="block text-3xl sm:text-5xl font-semibold text-primary/80">2x</span>
                   <p className="text-sm text-muted-foreground">mais aproveitamento da demanda que você já gera</p>
                 </div>
               </div>
@@ -619,7 +598,7 @@ function ProvaSocialSection() {
                 </div>
               </div>
               <div className="text-center space-y-1">
-                <p className="text-4xl font-bold text-primary">+24% Receita</p>
+                <p className="text-2xl sm:text-4xl font-bold text-primary">+24% Receita</p>
                 <p className="text-xs text-muted-foreground">30% menos investimento</p>
               </div>
             </div>
@@ -686,7 +665,7 @@ function ProvaSocialSection() {
         onButtonClick={openForm}
       />
 
-      <div className="container mx-auto pb-24">
+      <div className="mx-auto max-w-7xl px-4 pb-24">
         <div className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-10">
           <h3 className="text-2xl md:text-3xl font-bold tracking-tighter text-center">O que nossos clientes dizem</h3>
         </div>
@@ -712,7 +691,7 @@ function AntesDepoisSection() {
           <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl">O que muda na prática</h2>
           <p className="text-muted-foreground mt-4">Deslize para ver a diferença entre uma operação solta e uma operação estruturada.</p>
         </div>
-        <ImageComparison className="aspect-16/9 w-full rounded-lg border" enableHover>
+        <ImageComparison className="aspect-[16/9] w-full rounded-lg border" enableHover>
           <ImageComparisonImage
             src="/assets/imagemNovaAntes.png"
             alt="Antes — operação desorganizada"
@@ -727,7 +706,7 @@ function AntesDepoisSection() {
             <div className="absolute top-1/2 left-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white" />
           </ImageComparisonSlider>
         </ImageComparison>
-        <div className="grid grid-cols-2 gap-8 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mt-8">
           <div className="text-center">
             <h3 className="font-semibold text-lg mb-2">Antes</h3>
             <p className="text-sm text-muted-foreground">Leads dispersos, atendimento inconsistente, trabalho manual, falta de integração e baixa previsibilidade.</p>
@@ -870,13 +849,10 @@ export default function V2Page() {
         <ComoFuncionaSection />
       </div>
       <DiferenciaisSection />
-      <FerramentasSection />
       <ProvaSocialSection />
       <AntesDepoisSection />
-      <DottedSurface>
-        <FaqSection />
-        <OfertaSection />
-      </DottedSurface>
+      <FaqSection />
+      <OfertaSection />
       <Footer />
       <DiagnosticoForm open={formOpen} onOpenChange={setFormOpen} />
     </FormContext.Provider>

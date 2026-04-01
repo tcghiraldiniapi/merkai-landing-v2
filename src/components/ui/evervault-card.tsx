@@ -4,6 +4,18 @@ import React, { useState, useEffect } from "react";
 import { useMotionTemplate, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return isMobile;
+}
+
 export const EvervaultCard = ({
   text,
   className,
@@ -14,12 +26,14 @@ export const EvervaultCard = ({
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const [randomString, setRandomString] = useState("");
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     setRandomString(generateRandomString(1500));
   }, []);
 
   function onMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    if (isMobile) return;
     const { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
@@ -34,10 +48,12 @@ export const EvervaultCard = ({
       )}
     >
       <div
-        onMouseMove={onMouseMove}
+        onMouseMove={isMobile ? undefined : onMouseMove}
         className="group/card rounded-3xl w-full relative overflow-hidden bg-transparent flex items-center justify-center h-full"
       >
-        <CardPattern mouseX={mouseX} mouseY={mouseY} randomString={randomString} />
+        {!isMobile && (
+          <CardPattern mouseX={mouseX} mouseY={mouseY} randomString={randomString} />
+        )}
         <div className="relative z-10 flex items-center justify-center">
           <div className="relative h-44 w-44 rounded-full flex items-center justify-center text-white font-bold text-4xl">
             <div className="absolute w-full h-full bg-white/[0.8] dark:bg-black/[0.8] blur-sm rounded-full" />
@@ -91,12 +107,14 @@ export const EvervaultVisual = ({
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const [randomString, setRandomString] = useState("");
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     setRandomString(generateRandomString(1500));
   }, []);
 
   function onMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    if (isMobile) return;
     const { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
@@ -106,16 +124,19 @@ export const EvervaultVisual = ({
   return (
     <div
       className={cn(
-        "w-full rounded-xl border border-border/50 bg-muted/30 overflow-hidden relative flex items-center justify-center min-h-[280px]",
+        "w-full rounded-xl border border-border/50 overflow-hidden relative flex items-center justify-center min-h-[280px]",
+        isMobile ? "bg-muted/50" : "bg-muted/30",
         className
       )}
     >
-      <div
-        onMouseMove={onMouseMove}
-        className="group/card w-full h-full absolute inset-0"
-      >
-        <CardPattern mouseX={mouseX} mouseY={mouseY} randomString={randomString} />
-      </div>
+      {!isMobile && (
+        <div
+          onMouseMove={onMouseMove}
+          className="group/card w-full h-full absolute inset-0"
+        >
+          <CardPattern mouseX={mouseX} mouseY={mouseY} randomString={randomString} />
+        </div>
+      )}
       <div className="relative z-10 flex flex-col items-center justify-center p-8">
         {children}
       </div>

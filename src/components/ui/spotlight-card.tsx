@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, ReactNode } from 'react';
+import React, { useEffect, useRef, useState, ReactNode } from 'react';
 
 interface GlowCardProps {
   children: ReactNode;
@@ -37,8 +37,18 @@ const GlowCard: React.FC<GlowCardProps> = ({
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
     const syncPointer = (e: PointerEvent) => {
       const { clientX: x, clientY: y } = e;
       if (cardRef.current) {
@@ -50,7 +60,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
     };
     document.addEventListener('pointermove', syncPointer);
     return () => document.removeEventListener('pointermove', syncPointer);
-  }, []);
+  }, [isMobile]);
 
   const { base, spread } = glowColorMap[glowColor];
 
@@ -81,10 +91,10 @@ const GlowCard: React.FC<GlowCardProps> = ({
       backgroundColor: 'var(--backdrop, transparent)',
       backgroundSize: 'calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)))',
       backgroundPosition: '50% 50%',
-      backgroundAttachment: 'fixed',
+      backgroundAttachment: isMobile ? 'scroll' : 'fixed',
       border: 'var(--border-size) solid var(--backup-border)',
       position: 'relative',
-      touchAction: 'none',
+      touchAction: isMobile ? 'auto' : 'none',
     };
 
     if (width !== undefined) {
@@ -116,7 +126,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
         ${className}
       `}
     >
-      <div ref={innerRef} data-glow></div>
+      {!isMobile && <div ref={innerRef} data-glow></div>}
       {children}
     </div>
   );

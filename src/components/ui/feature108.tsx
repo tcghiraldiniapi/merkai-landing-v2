@@ -38,7 +38,7 @@ const Feature108 = ({
 }: Feature108Props) => {
   return (
     <section className="py-32">
-      <div className="container mx-auto">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col items-center gap-4 text-center">
           <Badge variant="outline">{badge}</Badge>
           <h1 className="max-w-2xl text-3xl font-semibold md:text-4xl">
@@ -48,29 +48,29 @@ const Feature108 = ({
         </div>
         {tabs.length > 0 && (
           <Tabs defaultValue={tabs[0].value} className="mt-8">
-            <TabsList className="container flex flex-col items-center justify-center gap-4 sm:flex-row md:gap-10">
+            <TabsList className="flex flex-wrap items-center justify-center gap-2 px-4 sm:gap-4 md:gap-10">
               {tabs.map((tab) => (
                 <TabsTrigger
                   key={tab.value}
                   value={tab.value}
-                  className="flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-muted-foreground data-[state=active]:bg-muted data-[state=active]:text-primary"
+                  className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-semibold text-muted-foreground data-[state=active]:bg-muted data-[state=active]:text-primary sm:px-4 sm:py-3"
                 >
                   {tab.icon} {tab.label}
                 </TabsTrigger>
               ))}
             </TabsList>
-            <div className="mx-auto mt-8 max-w-screen-xl rounded-2xl bg-muted/70 p-6 lg:p-16">
+            <div className="mx-auto mt-8 max-w-screen-xl rounded-2xl bg-muted/70 p-4 sm:p-6 lg:p-16">
               {tabs.map((tab) => (
                 <TabsContent
                   key={tab.value}
                   value={tab.value}
-                  className="grid place-items-center gap-20 lg:grid-cols-2 lg:gap-10"
+                  className="grid place-items-center gap-8 lg:grid-cols-2 lg:gap-10"
                 >
                   <div className="flex flex-col gap-5">
                     <Badge variant="outline" className="w-fit bg-background">
                       {tab.content.badge}
                     </Badge>
-                    <h3 className="text-3xl font-semibold lg:text-5xl">
+                    <h3 className="text-2xl font-semibold sm:text-3xl lg:text-5xl">
                       {tab.content.title}
                     </h3>
                     <p className="text-muted-foreground lg:text-lg">
