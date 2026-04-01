@@ -1,6 +1,6 @@
 'use client';
 import { cn } from '@/lib/utils';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 type DottedSurfaceProps = Omit<React.ComponentProps<'div'>, 'ref'>;
@@ -14,18 +14,7 @@ export function DottedSurface({ className, children, ...props }: DottedSurfacePr
 		renderer: THREE.WebGLRenderer;
 		animationId: number;
 	} | null>(null);
-	const [isMobile, setIsMobile] = useState(false);
-
 	useEffect(() => {
-		const mq = window.matchMedia('(max-width: 767px)');
-		setIsMobile(mq.matches);
-		const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-		mq.addEventListener('change', handler);
-		return () => mq.removeEventListener('change', handler);
-	}, []);
-
-	useEffect(() => {
-		if (isMobile) return;
 		if (!canvasContainerRef.current || !containerRef.current) return;
 
 		const container = containerRef.current;
@@ -142,13 +131,11 @@ export function DottedSurface({ className, children, ...props }: DottedSurfacePr
 				}
 			}
 		};
-	}, [isMobile]);
+	}, []);
 
 	return (
 		<div ref={containerRef} className={cn('relative', className)} {...props}>
-			{!isMobile && (
-				<div ref={canvasContainerRef} className="pointer-events-none absolute inset-0 -z-1 overflow-hidden" />
-			)}
+			<div ref={canvasContainerRef} className="pointer-events-none absolute inset-0 -z-1 overflow-hidden" />
 			{children}
 		</div>
 	);

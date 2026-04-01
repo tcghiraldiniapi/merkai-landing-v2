@@ -20,6 +20,9 @@ import { ImageComparison, ImageComparisonImage, ImageComparisonSlider } from '@/
 import { DottedSurface } from '@/components/ui/dotted-surface'
 import { EvervaultVisual } from '@/components/ui/evervault-card'
 import { DiagnosticoForm } from '@/components/ui/diagnostico-form'
+import { DiagnosticoScene } from '@/components/ui/diagnostico-scene'
+import { ArquiteturaScene } from '@/components/ui/arquitetura-scene'
+import { ImplementacaoScene } from '@/components/ui/implementacao-scene'
 
 /* ============================================================
    CONTEXTO DO FORMULÁRIO
@@ -77,9 +80,9 @@ function HeroHeader() {
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
             <div className="flex w-full justify-between lg:w-auto">
               <Link href="/v2" aria-label="home" className="flex items-center space-x-2">
-                <span className="text-xl font-bold tracking-tight">
+                <span className="text-2xl font-bold tracking-tight">
                   <span className="text-foreground">merk</span>
-                  <span className="text-muted-foreground">ai</span>
+                  <span className="text-primary">ai</span>
                 </span>
               </Link>
               <button
@@ -92,7 +95,7 @@ function HeroHeader() {
               </button>
             </div>
             <div className="absolute inset-0 m-auto hidden size-fit lg:block">
-              <ul className="flex gap-8 text-sm">
+              <ul className="flex gap-8 text-base">
                 {menuItems.map((item, index) => (
                   <li key={index}>
                     <Link href={item.href} className="text-muted-foreground hover:text-accent-foreground block duration-150">
@@ -409,8 +412,9 @@ function ComoFuncionaSection() {
         title: 'Mapeamos sua operação atual.',
         description: 'Analisamos seus canais, fluxo de atendimento, funil e os principais gargalos. Antes de propor qualquer coisa, entendemos o que está acontecendo de verdade.',
         buttonText: 'Saiba mais',
-        imageSrc: '/assets/DiagnosticoInicial.png',
+        imageSrc: '',
         imageAlt: 'Etapa de diagnóstico',
+        imageNode: <DiagnosticoScene />,
       },
     },
     {
@@ -422,8 +426,9 @@ function ComoFuncionaSection() {
         title: 'Desenhamos a solução sob medida.',
         description: 'Definimos a jornada do lead, as regras de qualificação, os fluxos, as integrações e a lógica que vai fazer a operação funcionar.',
         buttonText: 'Ver processo',
-        imageSrc: '/assets/Arquitetura.png',
+        imageSrc: '',
         imageAlt: 'Etapa de arquitetura',
+        imageNode: <ArquiteturaScene />,
       },
     },
     {
@@ -435,8 +440,9 @@ function ComoFuncionaSection() {
         title: 'Configuramos, testamos e acompanhamos.',
         description: 'CRM, automações, campanhas, fluxos e agente de IA. Tudo configurado, testado, refinado e monitorado de forma contínua.',
         buttonText: 'Começar agora',
-        imageSrc: '/assets/Implementacao.png',
+        imageSrc: '',
         imageAlt: 'Etapa de implementação',
+        imageNode: <ImplementacaoScene />,
       },
     },
   ]
@@ -541,7 +547,7 @@ function ProvaSocialSection() {
   const proofTabs = [
     {
       value: 'case-1',
-      icon: <Zap className="h-auto w-4 shrink-0" />,
+      icon: <Zap className="size-4 shrink-0" />,
       label: 'Escala 10x',
       content: {
         badge: 'Polozi in Company',
@@ -580,7 +586,7 @@ function ProvaSocialSection() {
     },
     {
       value: 'case-2',
-      icon: <Pointer className="h-auto w-4 shrink-0" />,
+      icon: <Pointer className="size-4 shrink-0" />,
       label: '+24% de Receita',
       content: {
         badge: 'Pousada da Gibinha',
@@ -608,7 +614,7 @@ function ProvaSocialSection() {
     },
     {
       value: 'case-3',
-      icon: <Layout className="h-auto w-4 shrink-0" />,
+      icon: <Layout className="size-4 shrink-0" />,
       label: 'Equipe 8→5',
       content: {
         badge: 'Posgrado Med',
@@ -850,7 +856,6 @@ export default function V2Page() {
       </div>
       <DiferenciaisSection />
       <ProvaSocialSection />
-      <AntesDepoisSection />
       <FaqSection />
       <OfertaSection />
       <Footer />

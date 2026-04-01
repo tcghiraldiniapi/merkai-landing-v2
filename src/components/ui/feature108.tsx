@@ -59,18 +59,18 @@ const Feature108 = ({
                 </TabsTrigger>
               ))}
             </TabsList>
-            <div className="mx-auto mt-8 max-w-screen-xl rounded-2xl bg-muted/70 p-4 sm:p-6 lg:p-16">
+            <div className="mx-auto mt-8 max-w-screen-xl rounded-2xl bg-muted/70 p-4 sm:p-6 lg:p-10">
               {tabs.map((tab) => (
                 <TabsContent
                   key={tab.value}
                   value={tab.value}
-                  className="grid place-items-center gap-8 lg:grid-cols-2 lg:gap-10"
+                  className="grid place-items-center gap-8 lg:grid-cols-[2fr_3fr] lg:gap-8"
                 >
                   <div className="flex flex-col gap-5">
                     <Badge variant="outline" className="w-fit bg-background">
                       {tab.content.badge}
                     </Badge>
-                    <h3 className="text-2xl font-semibold sm:text-3xl lg:text-5xl">
+                    <h3 className="text-2xl font-semibold sm:text-3xl lg:text-4xl">
                       {tab.content.title}
                     </h3>
                     <p className="text-muted-foreground lg:text-lg">
@@ -81,7 +81,9 @@ const Feature108 = ({
                     </Button>
                   </div>
                   {tab.content.imageNode ? (
-                    tab.content.imageNode
+                    <div className="w-full min-h-[360px] lg:min-h-[440px] overflow-hidden rounded-xl">
+                      {tab.content.imageNode}
+                    </div>
                   ) : (
                     <img
                       src={tab.content.imageSrc}
