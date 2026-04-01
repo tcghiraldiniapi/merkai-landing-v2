@@ -124,7 +124,7 @@ function HeroHeader() {
                 <Button size="sm" className={cn(isScrolled && 'lg:hidden')} onClick={openForm}>
                   <span>Agendar diagnóstico</span>
                 </Button>
-                <Button size="sm" className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')} onClick={openForm}>
+                <Button size="sm" className={cn(isScrolled ? 'hidden lg:inline-flex' : 'hidden')} onClick={openForm}>
                   <span>Agendar diagnóstico</span>
                 </Button>
               </div>

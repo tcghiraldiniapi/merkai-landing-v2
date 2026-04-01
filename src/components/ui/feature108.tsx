@@ -55,7 +55,7 @@ const Feature108 = ({
                   value={tab.value}
                   className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-semibold text-muted-foreground data-[state=active]:bg-muted data-[state=active]:text-primary sm:px-4 sm:py-3"
                 >
-                  {tab.icon} {tab.label}
+                  <span className="inline-flex items-center gap-2">{tab.icon}<span>{tab.label}</span></span>
                 </TabsTrigger>
               ))}
             </TabsList>
