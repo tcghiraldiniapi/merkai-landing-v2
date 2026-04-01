@@ -81,7 +81,7 @@ const Feature108 = ({
                     </Button>
                   </div>
                   {tab.content.imageNode ? (
-                    <div className="w-full min-h-[360px] lg:min-h-[440px] overflow-hidden rounded-xl">
+                    <div className="w-full min-h-[360px] lg:min-h-[440px] overflow-hidden rounded-xl flex flex-col [&>*]:flex-1">
                       {tab.content.imageNode}
                     </div>
                   ) : (
