@@ -97,6 +97,10 @@ export function DiagnosticoForm({
         body: JSON.stringify(formData),
       })
       setIsSuccess(true)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ;(window as any).dataLayer = (window as any).dataLayer || []
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ;(window as any).dataLayer.push({ event: "lead" })
     } catch {
       setIsSuccess(true)
     } finally {
