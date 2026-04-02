@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Syne } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -37,7 +38,19 @@ export default function RootLayout({
       className={`${dmSans.variable} ${syne.variable} dark antialiased`}
     >
       <body className="min-h-screen bg-background text-foreground font-[family-name:var(--font-dm-sans)] grain-overlay">
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-T4X4JMQH"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         {children}
+        <Script
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-T4X4JMQH"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
