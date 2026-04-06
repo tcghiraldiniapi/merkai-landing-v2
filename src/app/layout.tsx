@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { DM_Sans, Syne } from "next/font/google";
+import { Montserrat, Signika } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const syne = Syne({
-  variable: "--font-syne",
+const signika = Signika({
+  variable: "--font-signika",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["700"],
 });
 
 export const metadata: Metadata = {
@@ -35,9 +35,18 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${dmSans.variable} ${syne.variable} dark antialiased`}
+      className={`${montserrat.variable} ${signika.variable} dark antialiased`}
     >
-      <body className="min-h-screen bg-background text-foreground font-[family-name:var(--font-dm-sans)] grain-overlay">
+      <head>
+        <Script id="google-tag-manager" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T4X4JMQH');`}
+        </Script>
+      </head>
+      <body className="min-h-screen bg-background text-foreground font-[family-name:var(--font-montserrat)] grain-overlay">
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-T4X4JMQH"
@@ -47,10 +56,6 @@ export default function RootLayout({
           />
         </noscript>
         {children}
-        <Script
-          src="https://www.googletagmanager.com/gtm.js?id=GTM-T4X4JMQH"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );

@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { OPEN_DIAGNOSTIC_FORM_EVENT } from "@/lib/open-diagnostic-form";
 import { BGPattern } from "@/components/ui/bg-pattern";
-import { SectionSideLights } from "@/components/ui/section-side-lights";
 
 /* ─────────────────────────────────────────────
    Estilos reutilizáveis
@@ -86,7 +85,7 @@ function FormModal({ onClose }: { onClose: () => void }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-start md:items-center justify-center p-4 pt-[env(safe-area-inset-top,1rem)] overflow-y-auto bg-black/85 backdrop-blur-md"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
       <motion.div
@@ -94,7 +93,7 @@ function FormModal({ onClose }: { onClose: () => void }) {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.96, y: 18 }}
         transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-md bg-[#0d0d0d] border border-white/[0.07] rounded-2xl overflow-hidden"
+        className="w-full max-w-md bg-[#161616] border border-white/[0.07] rounded-2xl overflow-hidden my-auto md:my-0 shrink-0"
       >
         {/* Cabeçalho */}
         <div className="flex items-start justify-between px-7 pt-7 pb-5 border-b border-white/[0.05]">
@@ -124,7 +123,8 @@ function FormModal({ onClose }: { onClose: () => void }) {
         {status !== "success" && (
           <div className="h-[2px] bg-white/[0.04]">
             <motion.div
-              className="h-full bg-white/20"
+              className="h-full"
+              style={{ background: "linear-gradient(90deg, #c45008, #ff731c)" }}
               animate={{ width: step === 0 ? "50%" : "100%" }}
               transition={{ duration: 0.35 }}
             />
@@ -142,8 +142,8 @@ function FormModal({ onClose }: { onClose: () => void }) {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center py-4"
               >
-                <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mx-auto mb-5">
-                  <Check className="w-5 h-5 text-green-400" />
+                <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5" style={{ background: "rgba(255,115,28,0.1)", border: "1px solid rgba(255,115,28,0.25)" }}>
+                  <Check className="w-5 h-5" style={{ color: "#ff731c" }} />
                 </div>
                 <p className="text-white font-medium mb-2">Recebemos sua solicitação!</p>
                 <p className="text-neutral-500 text-sm leading-relaxed">
@@ -301,7 +301,11 @@ function FormModal({ onClose }: { onClose: () => void }) {
                 (step === 0 && !step1Valid) ||
                 (step === 1 && (!step2Valid || status === "submitting"))
               }
-              className="inline-flex items-center gap-2 bg-white text-black text-sm font-semibold px-6 py-2.5 rounded-xl hover:bg-neutral-100 transition-colors disabled:opacity-35 disabled:cursor-not-allowed cursor-pointer"
+              className="inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-2.5 rounded-xl transition-all disabled:opacity-35 disabled:cursor-not-allowed cursor-pointer tracking-[0.03em]"
+              style={{
+                background: "linear-gradient(135deg, #c45008 0%, #ff731c 100%)",
+                boxShadow: "0 0 20px rgba(255,115,28,0.3)",
+              }}
             >
               {status === "submitting" ? (
                 <><Loader2 className="w-4 h-4 animate-spin" /> Enviando...</>
@@ -332,7 +336,7 @@ export function CTA() {
 
   return (
     <>
-      <section className="relative w-full bg-black" id="agendar">
+      <section className="relative w-full bg-[#101010]" id="agendar">
         <BGPattern
           variant="grid"
           mask="fade-x"
@@ -342,8 +346,8 @@ export function CTA() {
         />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 py-28">
-          <div className="relative mx-auto flex w-full max-w-3xl flex-col justify-between gap-y-8 border-y border-white/[0.07] bg-[radial-gradient(35%_80%_at_25%_0%,rgba(255,255,255,0.08),transparent)] px-6 py-10 md:px-10 md:py-12">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-6 lg:px-12 py-8 md:py-14">
+          <div className="relative mx-auto flex w-full max-w-3xl flex-col justify-between gap-y-6 md:gap-y-8 border-y border-white/[0.07] bg-[radial-gradient(35%_80%_at_25%_0%,rgba(255,115,28,0.06),transparent)] px-5 py-8 md:px-10 md:py-12">
 
             {/* Cantos + */}
             <PlusIcon className="absolute -top-3 -left-3 text-white/20 size-6" strokeWidth={1} />
@@ -364,12 +368,12 @@ export function CTA() {
                 Diagnóstico de IA
               </p>
               <h2 className="text-2xl font-bold leading-tight text-white md:text-4xl">
-                Pronto para tirar a IA
+                Se você quer uma automação que acelere vendas, reduza trabalho operacional e dê suporte real ao time,
                 <br />
-                <span className="text-white/35">do discurso?</span>
+                <span className="text-white/35">o próximo passo é alinhar a estrutura certa.</span>
               </h2>
               <p className="mx-auto max-w-xl text-sm leading-relaxed text-neutral-400 md:text-base">
-                Em 30 minutos, mostramos onde IA SDR, automação e agentes de IA podem entrar primeiro.
+                Em uma conversa, mostramos onde sua empresa pode usar agentes de IA com mais segurança, mais lógica e mais impacto no processo.
               </p>
             </div>
 
@@ -382,9 +386,13 @@ export function CTA() {
               </a>
               <button
                 onClick={() => setIsOpen(true)}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-neutral-100 cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white transition-all active:scale-95 cursor-pointer tracking-[0.03em]"
+                style={{
+                  background: "linear-gradient(135deg, #c45008 0%, #ff731c 100%)",
+                  boxShadow: "0 0 28px rgba(255,115,28,0.4)",
+                }}
               >
-                Agendar Diagnóstico
+                Entrar em contato para alinhamento
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

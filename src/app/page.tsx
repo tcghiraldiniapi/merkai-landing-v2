@@ -143,13 +143,17 @@ function HeroSection() {
       <HeroHeader />
       <DottedSurface>
         <section>
-          <div className="relative pt-24 md:pt-36 pb-20 md:pb-32">
+          <div className="relative overflow-hidden pt-24 pb-20 md:pt-36 md:pb-32">
+            <div className="pointer-events-none absolute inset-x-0 top-24 -z-10 h-[34rem] bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.18),transparent_46%),radial-gradient(circle_at_18%_22%,rgba(245,158,11,0.1),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(38,38,38,0.08),transparent_24%)]" />
             <div className="mx-auto max-w-7xl px-6">
-              <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
+              <div className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-background/88 px-6 py-10 text-center shadow-[0_24px_80px_-48px_rgba(38,38,38,0.45)] backdrop-blur-sm sm:mx-auto sm:px-8 md:px-12 md:py-14 lg:mr-auto lg:mt-0">
+                <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+                <div className="pointer-events-none absolute -left-20 top-16 h-40 w-40 rounded-full bg-primary/12 blur-3xl" />
+                <div className="pointer-events-none absolute -right-20 bottom-10 h-44 w-44 rounded-full bg-primary/10 blur-3xl" />
                 <AnimatedGroup variants={transitionVariants}>
                   <Link
                     href="#solucao"
-                    className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
+                    className="hover:bg-background dark:hover:border-t-border bg-muted/80 group mx-auto flex w-fit items-center gap-4 rounded-full border border-border/80 p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
                   >
                     <span className="text-foreground text-sm">Sistema de Conversão Inteligente</span>
                     <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700" />
@@ -161,12 +165,49 @@ function HeroSection() {
                     </div>
                   </Link>
 
-                  <h1 className="mt-8 max-w-4xl mx-auto text-balance text-4xl sm:text-5xl md:text-7xl lg:mt-16 xl:text-[5.25rem]">
-                    Organize sua operação comercial e pare de perder leads
+                  <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-[0.7rem] font-medium uppercase tracking-[0.24em] text-muted-foreground lg:mt-12">
+                    <span className="rounded-full border border-border/70 bg-background/75 px-3 py-1">Tráfego Pago</span>
+                    <span className="rounded-full border border-border/70 bg-background/75 px-3 py-1">Automação</span>
+                    <span className="rounded-full border border-border/70 bg-background/75 px-3 py-1">IA Aplicada</span>
+                  </div>
+
+                  <h1 className="mx-auto mt-8 max-w-5xl text-balance font-[family-name:var(--font-syne)] text-4xl font-semibold leading-[0.98] tracking-[-0.04em] sm:text-5xl md:text-7xl xl:text-[5.35rem]">
+                    <span className="block">Organize sua</span>
+                    <span className="block text-primary">operação comercial</span>
+                    <span className="mt-2 block text-3xl font-medium tracking-[-0.03em] text-foreground/90 sm:text-4xl md:text-5xl xl:text-[4rem]">
+                      e pare de perder leads
+                    </span>
                   </h1>
-                  <p className="mx-auto mt-8 max-w-2xl text-balance text-lg">
-                    Sua empresa já gera demanda, mas o processo comercial ainda é lento, manual e confuso. A Merkai estrutura sua captação, triagem e conversão com tráfego, automação e IA.
-                  </p>
+
+                  <div className="mx-auto mt-8 max-w-3xl space-y-3 text-balance">
+                    <p className="text-lg text-foreground/90 md:text-xl">
+                      Sua empresa já gera demanda. O processo comercial ainda é lento, manual e confuso.
+                    </p>
+                    <p className="mx-auto max-w-2xl text-base text-muted-foreground md:text-lg">
+                      A Merkai estrutura sua captação, triagem e conversão com tráfego, automação e IA.
+                    </p>
+                  </div>
+
+                  <div className="mx-auto mt-8 grid max-w-3xl gap-3 text-left sm:grid-cols-3">
+                    <div className="rounded-2xl border border-border/70 bg-background/72 p-4 shadow-sm shadow-black/5">
+                      <div className="mb-3 flex size-10 items-center justify-center rounded-full bg-primary/12 text-primary">
+                        <Target className="size-4" />
+                      </div>
+                      <p className="text-sm font-medium text-foreground">Captação com foco em oportunidade real</p>
+                    </div>
+                    <div className="rounded-2xl border border-border/70 bg-background/72 p-4 shadow-sm shadow-black/5">
+                      <div className="mb-3 flex size-10 items-center justify-center rounded-full bg-primary/12 text-primary">
+                        <Layers className="size-4" />
+                      </div>
+                      <p className="text-sm font-medium text-foreground">Triagem estruturada e menos improviso</p>
+                    </div>
+                    <div className="rounded-2xl border border-border/70 bg-background/72 p-4 shadow-sm shadow-black/5">
+                      <div className="mb-3 flex size-10 items-center justify-center rounded-full bg-primary/12 text-primary">
+                        <BarChart3 className="size-4" />
+                      </div>
+                      <p className="text-sm font-medium text-foreground">Conversão com processo mais claro</p>
+                    </div>
+                  </div>
                 </AnimatedGroup>
 
                 <AnimatedGroup
@@ -174,14 +215,14 @@ function HeroSection() {
                     container: { visible: { transition: { staggerChildren: 0.05, delayChildren: 0.75 } } },
                     ...transitionVariants,
                   }}
-                  className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row pointer-events-auto"
+                  className="pointer-events-auto mt-12 flex flex-col items-center justify-center gap-3 md:flex-row"
                 >
-                  <div key={1} className="bg-foreground/10 rounded-[14px] border p-0.5">
-                    <Button size="lg" className="rounded-xl px-5 text-base" onClick={openForm}>
+                  <div key={1} className="rounded-[16px] border border-primary/20 bg-primary/10 p-1">
+                    <Button size="lg" className="rounded-[12px] px-6 text-base" onClick={openForm}>
                       <span className="text-nowrap">Agendar diagnóstico</span>
                     </Button>
                   </div>
-                  <Button key={2} asChild size="lg" variant="ghost" className="h-10.5 rounded-xl px-5">
+                  <Button key={2} asChild size="lg" variant="ghost" className="h-11 rounded-xl border border-border/80 px-5">
                     <Link href="#solucao"><span className="text-nowrap">Como funciona</span></Link>
                   </Button>
                 </AnimatedGroup>
@@ -830,7 +871,7 @@ function Footer() {
           Estruturação de operações comerciais com tráfego, automação e IA.
         </p>
         <p className="text-xs text-muted-foreground">
-          &copy; {new Date().getFullYear()} Merkai. Todos os direitos reservados.
+          &copy; {new Date().getFullYear()} Merkai. CNPJ 53.363.840/0001-85. Todos os direitos reservados.
         </p>
       </div>
     </footer>

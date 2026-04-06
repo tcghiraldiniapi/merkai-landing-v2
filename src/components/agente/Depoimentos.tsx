@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import { TestimonialsColumn, type Testimonial } from "@/components/ui/testimonials-columns-agente";
 import { BGPattern } from "@/components/ui/bg-pattern";
-import { SectionSideLights } from "@/components/ui/section-side-lights";
 
 const depoimentos: Testimonial[] = [
   {
@@ -49,7 +48,7 @@ const col3 = depoimentos.slice(4, 6);
 
 export function Depoimentos() {
   return (
-    <section className="relative w-full bg-black">
+    <section className="relative w-full bg-[#101010]">
       <BGPattern
         variant="grid"
         mask="fade-edges"
@@ -57,11 +56,10 @@ export function Depoimentos() {
         fill="rgba(255,255,255,0.04)"
         className="opacity-26"
       />
-      <SectionSideLights reverse />
 
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-12 py-28">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 md:px-6 lg:px-12 py-8 md:py-14">
 
         {/* Header */}
         <motion.div
@@ -69,12 +67,11 @@ export function Depoimentos() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
-          className="max-w-xl mb-16"
+          className="max-w-xl mb-10 md:mb-16"
         >
-          <div className="inline-flex items-center gap-2 mb-8
-                          border border-white/10 rounded-full px-4 py-1.5 bg-white/[0.03]">
-            <span className="w-1.5 h-1.5 rounded-full bg-white/50" />
-            <span className="text-xs font-medium text-white/40 tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 mb-8 rounded-full px-4 py-1.5" style={{ border: "1px solid rgba(255,115,28,0.2)", background: "rgba(255,115,28,0.06)" }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#ff731c]" />
+            <span className="text-xs font-medium tracking-[0.22em] uppercase" style={{ color: "rgba(255,115,28,0.8)" }}>
               Depoimentos
             </span>
           </div>
@@ -90,8 +87,8 @@ export function Depoimentos() {
         </motion.div>
 
         {/* Colunas com scroll infinito */}
-        <div className="flex justify-start gap-4 [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)] max-h-[640px] overflow-hidden">
-          <TestimonialsColumn testimonials={col1} duration={18} />
+        <div className="flex justify-center md:justify-start gap-4 [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)] max-h-[480px] md:max-h-[640px] overflow-hidden">
+          <TestimonialsColumn testimonials={col1} duration={18} className="w-full max-w-[calc(100vw-2.5rem)] sm:max-w-sm md:max-w-xs md:w-auto" />
           <TestimonialsColumn testimonials={col2} duration={22} className="hidden md:block" />
           <TestimonialsColumn testimonials={col3} duration={16} className="hidden lg:block" />
         </div>

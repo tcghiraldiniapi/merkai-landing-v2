@@ -29,8 +29,8 @@ export function Navbar() {
       <nav data-state={menuState && "active"} className="fixed z-40 w-full px-2 group">
         <div
           className={cn(
-            "mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12",
-            isScrolled && "max-w-5xl rounded-2xl border border-white/[0.08] bg-black/45 backdrop-blur-xl lg:px-6",
+            "mx-auto mt-2 max-w-6xl rounded-2xl border border-white/20 px-6 transition-all duration-300 lg:px-12",
+            isScrolled && "max-w-5xl border-white/25 bg-black/45 backdrop-blur-xl lg:px-6",
           )}
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
@@ -64,15 +64,23 @@ export function Navbar() {
               </ul>
             </div>
 
-            <div className="mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border border-white/[0.08] bg-black/85 p-6 shadow-2xl shadow-black/25 group-data-[state=active]:block lg:mb-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none">
+            {/* Overlay para fechar menu mobile */}
+            {menuState && (
+              <div
+                className="fixed inset-0 z-[-1] lg:hidden"
+                onClick={() => setMenuState(false)}
+              />
+            )}
+
+            <div className="mb-6 hidden w-full flex-wrap items-center justify-end space-y-6 rounded-2xl border border-white/[0.08] bg-black/90 backdrop-blur-xl p-5 shadow-2xl shadow-black/25 group-data-[state=active]:block lg:mb-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:rounded-none">
               <div className="lg:hidden">
-                <ul className="space-y-6 text-base">
+                <ul className="space-y-1 text-base">
                   {menuItems.map((item) => (
                     <li key={item.name}>
                       <Link
                         href={item.href}
                         onClick={() => setMenuState(false)}
-                        className="block text-white/70 transition-colors duration-150 hover:text-white"
+                        className="block min-h-11 py-2.5 text-white/70 transition-colors duration-150 hover:text-white"
                       >
                         <span>{item.name}</span>
                       </Link>
@@ -85,7 +93,11 @@ export function Navbar() {
                   setMenuState(false);
                   openDiagnosticForm();
                 }}
-                className="inline-flex w-full items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-neutral-100 lg:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white transition-all active:scale-95 lg:w-auto tracking-[0.03em]"
+              style={{
+                background: "linear-gradient(135deg, #c45008 0%, #ff731c 100%)",
+                boxShadow: "0 0 20px rgba(255,115,28,0.3)",
+              }}
               >
                 Agendar Diagnóstico
               </button>

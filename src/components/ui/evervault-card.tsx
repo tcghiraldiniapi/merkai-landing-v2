@@ -5,10 +5,12 @@ import { useMotionTemplate, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(max-width: 767px)").matches;
+  });
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
-    setIsMobile(mq.matches);
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -25,12 +27,8 @@ export const EvervaultCard = ({
 }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const [randomString, setRandomString] = useState("");
+  const [randomString, setRandomString] = useState(() => generateRandomString(1500));
   const isMobile = useIsMobile();
-
-  useEffect(() => {
-    setRandomString(generateRandomString(1500));
-  }, []);
 
   function onMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
     if (isMobile) return;
@@ -106,12 +104,8 @@ export const EvervaultVisual = ({
 }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const [randomString, setRandomString] = useState("");
+  const [randomString, setRandomString] = useState(() => generateRandomString(1500));
   const isMobile = useIsMobile();
-
-  useEffect(() => {
-    setRandomString(generateRandomString(1500));
-  }, []);
 
   function onMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
     if (isMobile) return;

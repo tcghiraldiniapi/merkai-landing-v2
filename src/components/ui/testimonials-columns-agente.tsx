@@ -15,7 +15,7 @@ export const TestimonialsColumn = (props: {
   duration?: number;
 }) => {
   return (
-    <div className={props.className}>
+    <div className={props.className} style={{ touchAction: "pan-y" }}>
       <motion.div
         animate={{ translateY: "-50%" }}
         transition={{
@@ -24,17 +24,18 @@ export const TestimonialsColumn = (props: {
           ease: "linear",
           repeatType: "loop",
         }}
-        className="flex flex-col gap-4 pb-4 bg-black"
+        style={{ willChange: "transform", transform: "translateZ(0)" }}
+        className="flex flex-col gap-4 pb-4"
       >
         {[...new Array(2).fill(0).map((_, index) => (
           <React.Fragment key={index}>
             {props.testimonials.map(({ text, image, name, role }, i) => (
               <div
                 key={i}
-                className="p-6 rounded-2xl border border-white/[0.07] bg-[#0c0c0c] max-w-xs w-full"
+                className="p-6 rounded-2xl border border-white/[0.07] bg-[#161616] w-full max-w-xs md:max-w-xs"
               >
                 <p className="text-sm text-neutral-400 leading-relaxed mb-5">
-                  "{text}"
+                  &ldquo;{text}&rdquo;
                 </p>
                 <div className="flex items-center gap-3">
                   <img

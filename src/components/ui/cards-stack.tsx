@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion, type HTMLMotionProps } from "framer-motion"
+import { motion, type HTMLMotionProps } from "motion/react"
 import { cn } from "@/lib/utils"
 
 interface CardStickyProps extends HTMLMotionProps<"div"> {
@@ -36,7 +36,14 @@ const CardSticky = React.forwardRef<HTMLDivElement, CardStickyProps>(
       <motion.div
         ref={ref}
         layout="position"
-        style={{ top: y, z, backfaceVisibility: "hidden", ...style }}
+        style={{
+          top: y,
+          z,
+          zIndex: 100 - index,
+          backfaceVisibility: "hidden",
+          transformStyle: "preserve-3d",
+          ...style,
+        }}
         className={cn("sticky", className)}
         {...props}
       >

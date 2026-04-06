@@ -1,60 +1,59 @@
 import { BentoGrid, type BentoItem } from "@/components/ui/bento-grid";
 import { Zap, Target, Activity, Filter, Eye, TrendingUp } from "lucide-react";
 import { BGPattern } from "@/components/ui/bg-pattern";
-import { SectionSideLights } from "@/components/ui/section-side-lights";
 
 const itens: BentoItem[] = [
   {
-    title: "Resposta em segundos",
-    description: "O agente de IA atende no primeiro contato e reduz o tempo entre interesse e resposta.",
+    title: "Atendimento com mais identidade",
+    description: "O agente responde com mais contexto, clareza e alinhamento com a sua empresa.",
     icon: <Zap className="w-4 h-4 text-green-400" />,
-    status: "IA SDR",
-    tags: ["WhatsApp", "Site", "Leads"],
+    status: "Identidade",
+    tags: ["Contexto", "Linguagem", "Marca"],
     colSpan: 2,
     hasPersistentHover: true,
   },
   {
-    title: "Menos trabalho manual",
-    description: "A equipe para de mover informação na mão e volta a focar no que exige contexto humano.",
+    title: "Mais velocidade no primeiro contato",
+    description: "O lead é atendido rápido sem ficar esperando alguém assumir manualmente.",
     icon: <Target className="w-4 h-4 text-blue-400" />,
-    status: "Operação",
-    tags: ["Automação"],
+    status: "Velocidade",
+    tags: ["Leads", "Resposta"],
   },
   {
-    title: "CRM atualizado",
-    description: "O pipeline deixa de depender de memória, disciplina manual ou cobrança da gestão.",
+    title: "Menos peso operacional para o time",
+    description: "A equipe para de gastar energia com tarefas repetitivas e ganha mais tempo para vender.",
     icon: <Activity className="w-4 h-4 text-blue-400" />,
-    status: "CRM",
-    tags: ["Funil", "Dados"],
+    status: "Operacao",
+    tags: ["Rotina", "Eficiência"],
   },
   {
-    title: "Qualificação padronizada",
-    description: "A IA SDR aplica os mesmos critérios em todos os contatos e reduz ruído no topo do funil.",
+    title: "Qualificação mais organizada",
+    description: "A entrada dos leads fica mais limpa, com critérios consistentes e menos ruído no funil.",
     icon: <Filter className="w-4 h-4 text-purple-400" />,
-    status: "IA SDR",
-    tags: ["Processo", "Qualificação"],
+    status: "Qualificação",
+    tags: ["Processo", "Leads"],
     colSpan: 2,
   },
   {
-    title: "Mais visibilidade",
-    description: "Sua empresa entende o que entrou, o que avançou e o que travou sem depender de repasse manual.",
+    title: "CRM e operação conectados",
+    description: "As informações deixam de ficar espalhadas e passam a seguir um fluxo mais confiável.",
     icon: <Eye className="w-4 h-4 text-white/50" />,
-    status: "360°",
-    tags: ["Relatórios", "Histórico"],
+    status: "CRM",
+    tags: ["Fluxo", "Dados"],
     colSpan: 2,
   },
   {
-    title: "Escala com o mesmo time",
-    description: "Mais volume e mais consistência sem crescer a operação na mesma proporção.",
+    title: "Mais suporte para vendas",
+    description: "A IA deixa de ser uma promessa solta e passa a funcionar como apoio real para a equipe comercial.",
     icon: <TrendingUp className="w-4 h-4 text-green-400" />,
-    status: "Escala",
-    tags: ["IA para empresas"],
+    status: "Comercial",
+    tags: ["Suporte", "Performance"],
   },
 ];
 
 export function Beneficios() {
   return (
-    <section className="relative w-full bg-black overflow-hidden" id="beneficios">
+    <section className="relative w-full bg-[#101010] overflow-x-hidden" id="beneficios">
       <BGPattern
         variant="grid"
         mask="fade-edges"
@@ -62,29 +61,28 @@ export function Beneficios() {
         fill="rgba(255,255,255,0.045)"
         className="opacity-40"
       />
-      <SectionSideLights />
 
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-12 py-28">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 md:px-6 lg:px-12 py-8 md:py-14">
 
         {/* Header */}
-        <div className="max-w-2xl mb-14">
-          <div className="inline-flex items-center gap-2 mb-8
-                          border border-white/10 rounded-full px-4 py-1.5 bg-white/[0.03]">
-            <span className="w-1.5 h-1.5 rounded-full bg-white/50" />
-            <span className="text-xs font-medium text-white/40 tracking-widest uppercase">
+        <div className="max-w-2xl mb-10 md:mb-14">
+          <div className="inline-flex items-center gap-2 mb-8 rounded-full px-4 py-1.5" style={{ border: "1px solid rgba(255,115,28,0.2)", background: "rgba(255,115,28,0.06)" }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#ff731c]" />
+            <span className="text-xs font-medium tracking-[0.22em] uppercase" style={{ color: "rgba(255,115,28,0.8)" }}>
               Benefícios
             </span>
           </div>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-            O que muda quando a IA{" "}
-            <span className="text-white/35">entra na operação.</span>
+            O que muda quando a IA
+            {" "}
+            <span className="text-white/35">entra do jeito certo na operação.</span>
           </h2>
 
           <p className="text-neutral-500 text-base md:text-lg leading-relaxed">
-            Menos improviso. Mais velocidade, controle e consistência.
+            Menos atendimento frio. Mais apoio real para o comercial.
           </p>
         </div>
 

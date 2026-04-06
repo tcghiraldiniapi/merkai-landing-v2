@@ -1,6 +1,4 @@
 import Link from 'next/link'
-import { MessageCircle } from 'lucide-react'
-
 export function Footer() {
   return (
     <footer className="border-t border-border/50">
@@ -32,10 +30,7 @@ export function Footer() {
             <div>
               <h4 className="text-sm font-semibold mb-3">Contato</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <MessageCircle className="h-4 w-4" />
-                  <span>Atendimento via WhatsApp</span>
-                </li>
+                <li>thiago@merkai.com.br</li>
                 <li>Reunião comercial por agendamento</li>
               </ul>
             </div>
@@ -44,7 +39,7 @@ export function Footer() {
 
         <div className="mt-10 pt-6 border-t border-border/30 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Merkai. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} Merkai. CNPJ 53.363.840/0001-85. Todos os direitos reservados.
           </p>
         </div>
       </div>

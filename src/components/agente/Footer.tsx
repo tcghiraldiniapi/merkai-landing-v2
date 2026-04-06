@@ -1,20 +1,19 @@
 import { BGPattern } from "@/components/ui/bg-pattern";
 import { BrandName } from "@/components/agente/BrandName";
-import { SectionSideLights } from "@/components/ui/section-side-lights";
 
 export function Footer() {
   return (
-    <footer className="relative w-full bg-black overflow-hidden">
+    <footer className="relative w-full bg-[#101010] overflow-x-hidden">
       <BGPattern
-        variant="vertical-lines"
+        variant="grid"
         mask="fade-top"
-        size={28}
-        fill="rgba(255,255,255,0.04)"
+        size={36}
+        fill="rgba(255,255,255,0.045)"
         className="opacity-35"
       />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 py-16">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-6 lg:px-12 py-8 md:py-16">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] md:gap-16">
           <div className="space-y-3">
             <p className="text-2xl font-bold tracking-tight text-white">
@@ -32,22 +31,10 @@ export function Footer() {
               </p>
               <div className="space-y-2 text-sm text-neutral-400">
                 <a
-                  href="mailto:contato@merkai.com.br"
+                  href="mailto:thiago@merkai.com.br"
                   className="block transition-colors hover:text-white"
                 >
-                  contato@merkai.com.br
-                </a>
-                <a
-                  href="https://wa.me/5511999999999"
-                  className="block transition-colors hover:text-white"
-                >
-                  WhatsApp
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/merkai"
-                  className="block transition-colors hover:text-white"
-                >
-                  LinkedIn
+                  thiago@merkai.com.br
                 </a>
               </div>
             </div>
@@ -57,9 +44,9 @@ export function Footer() {
                 Institucional
               </p>
               <div className="space-y-2 text-sm text-neutral-400">
-                <p>CNPJ: XX.XXX.XXX/XXXX-XX</p>
+                <p>CNPJ: 53.363.840/0001-85</p>
                 <p>
-                  © 2025 <BrandName />. Todos os direitos reservados.
+                  © {new Date().getFullYear()} <BrandName />. Todos os direitos reservados.
                 </p>
               </div>
             </div>

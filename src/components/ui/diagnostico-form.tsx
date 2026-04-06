@@ -22,6 +22,12 @@ import {
 } from "@/components/ui/dialog"
 import { cn } from "@/lib/utils"
 
+declare global {
+  interface Window {
+    dataLayer?: Array<Record<string, unknown>>
+  }
+}
+
 const steps = [
   { id: "pessoal", title: "Informações Pessoais" },
   { id: "empresa", title: "Empresa" },
@@ -91,16 +97,22 @@ export function DiagnosticoForm({
   const handleSubmit = async () => {
     setIsSubmitting(true)
     try {
-      await fetch("https://webhook.altimatics.com/webhook/merkai-formulario-landingpage", {
+      const response = await fetch("https://webhook.altimatics.com/webhook/merkai-formulario-landingpage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       })
+
+      if (!response.ok) {
+        throw new Error("Failed to submit diagnostic form")
+      }
+
       setIsSuccess(true)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(window as any).dataLayer = (window as any).dataLayer || []
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(window as any).dataLayer.push({ event: "lead" })
+      window.dataLayer = window.dataLayer || []
+      window.dataLayer.push({
+        event: "lead",
+        form_name: "diagnostico",
+      })
     } catch {
       setIsSuccess(true)
     } finally {

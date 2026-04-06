@@ -65,15 +65,12 @@ export function GradientWaveText({
   const startAtRef = useRef(0);
   const hasPlayedRef = useRef(false);
 
-  const [isInView, setIsInView] = useState(!inView);
+  const [isInView, setIsInView] = useState(() => !inView);
 
   const cycles = repeat ? 0 : 1;
 
   useEffect(() => {
-    if (!inView) {
-      setIsInView(true);
-      return;
-    }
+    if (!inView) return;
 
     const node = elRef.current;
     if (!node) return;

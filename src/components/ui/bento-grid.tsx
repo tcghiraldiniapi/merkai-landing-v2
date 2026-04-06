@@ -30,14 +30,14 @@ function BentoGrid({ items, className }: BentoGridProps) {
             "border border-white/[0.07] bg-[#0c0c0c]",
             "hover:-translate-y-0.5 will-change-transform",
             item.colSpan === 2 ? "md:col-span-2" : "md:col-span-1",
-            item.hasPersistentHover && "-translate-y-0.5"
+            item.hasPersistentHover && "md:-translate-y-0.5"
           )}
         >
           {/* Dot pattern on hover */}
           <div
             className={cn(
               "absolute inset-0 transition-opacity duration-300",
-              item.hasPersistentHover ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+              item.hasPersistentHover ? "opacity-0 md:opacity-100" : "opacity-0 group-hover:opacity-100"
             )}
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[length:4px_4px]" />
@@ -47,7 +47,7 @@ function BentoGrid({ items, className }: BentoGridProps) {
           <div
             className={cn(
               "absolute inset-0 -z-10 rounded-2xl p-px bg-gradient-to-br from-transparent via-white/10 to-transparent transition-opacity duration-300",
-              item.hasPersistentHover ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+              item.hasPersistentHover ? "opacity-0 md:opacity-100" : "opacity-0 group-hover:opacity-100"
             )}
           />
 
