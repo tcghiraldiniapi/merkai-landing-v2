@@ -35,7 +35,7 @@ export function Navbar() {
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
             <div className="flex w-full justify-between lg:w-auto">
-              <Link href="/" aria-label="home" className="flex items-center space-x-2">
+              <Link href="#" aria-label="home" className="flex items-center space-x-2">
                 <BrandName className="text-lg font-semibold tracking-tight text-white" />
               </Link>
 

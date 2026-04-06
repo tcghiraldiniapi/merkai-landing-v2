@@ -63,7 +63,7 @@ export function Solucao() {
             <div className="inline-flex items-center gap-2 w-fit mb-8 rounded-full px-4 py-1.5" style={{ border: "1px solid rgba(255,115,28,0.2)", background: "rgba(255,115,28,0.06)" }}>
               <span className="w-1.5 h-1.5 rounded-full bg-[#ff731c]" />
               <span className="text-xs font-medium tracking-[0.22em] uppercase" style={{ color: "rgba(255,115,28,0.8)" }}>
-                Agência de IA
+                Merkai
               </span>
             </div>
 
@@ -101,7 +101,7 @@ export function Solucao() {
           </div>
 
           {/* ── Direita: sticky cards em desktop, stack normal em mobile ── */}
-          <ContainerScroll className="min-h-0 md:min-h-[218vh] space-y-4 md:space-y-5 pb-0 md:pt-12 md:pb-2">
+          <ContainerScroll className="min-h-0 md:min-h-[195vh] space-y-4 md:space-y-5 pb-16 md:pt-12 md:pb-0">
             {solucoes.map((s, i) => (
               <CardSticky
                 key={s.numero}

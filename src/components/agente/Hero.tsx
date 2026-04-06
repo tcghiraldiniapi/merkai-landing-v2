@@ -8,31 +8,6 @@ export function Hero() {
   return (
     <section className="relative min-h-[auto] md:min-h-screen w-full bg-[#101010] overflow-x-hidden flex items-center">
 
-      {/* Glow de acento esquerdo */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          top: "5%",
-          left: "-5%",
-          width: "600px",
-          height: "600px",
-          background: "radial-gradient(circle, rgba(255,115,28,0.09) 0%, transparent 65%)",
-          filter: "blur(60px)",
-        }}
-      />
-
-      {/* Glow secundário canto superior direito */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          top: "-10%",
-          right: "10%",
-          width: "400px",
-          height: "400px",
-          background: "radial-gradient(circle, rgba(255,115,28,0.04) 0%, transparent 70%)",
-          filter: "blur(50px)",
-        }}
-      />
 
       <BGPattern
         variant="grid"
@@ -41,6 +16,58 @@ export function Hero() {
         fill="rgba(255,255,255,0.04)"
         className="opacity-40"
       />
+
+      {/* Facho de luz diagonal */}
+      <div aria-hidden="true" className="beam-container absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 1 }}>
+        <div className="beam-body" />
+        <div className="beam-core" />
+        <div className="beam-origin" />
+      </div>
+      <style>{`
+        .beam-body {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to bottom, rgba(255,252,245,0.17) 0%, rgba(255,250,240,0.07) 45%, transparent 78%);
+          clip-path: polygon(0% 0%, 3% 0%, 68% 100%, 38% 100%);
+          mix-blend-mode: screen;
+          animation: beamPulse 5s ease-in-out infinite;
+        }
+        .beam-core {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to bottom, rgba(255,255,252,0.28) 0%, rgba(255,252,245,0.10) 40%, transparent 68%);
+          clip-path: polygon(0% 0%, 1.5% 0%, 58% 100%, 48% 100%);
+          filter: blur(5px);
+          mix-blend-mode: screen;
+          animation: beamPulse 5s ease-in-out infinite;
+        }
+        .beam-origin {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4%;
+          height: 2px;
+          background: rgba(255,252,245,0.65);
+          filter: blur(3px);
+          animation: beamPulse 5s ease-in-out infinite;
+        }
+        @media (max-width: 767px) {
+          .beam-body {
+            clip-path: polygon(0% 0%, 12% 0%, 90% 55%, 30% 55%);
+            background: linear-gradient(to bottom, rgba(255,252,245,0.20) 0%, rgba(255,250,240,0.08) 35%, transparent 55%);
+          }
+          .beam-core {
+            clip-path: polygon(0% 0%, 7% 0%, 72% 55%, 48% 55%);
+          }
+          .beam-origin {
+            width: 12%;
+          }
+        }
+        @keyframes beamPulse {
+          0%, 100% { opacity: 0.65; }
+          50% { opacity: 1; }
+        }
+      `}</style>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-6 flex flex-col md:flex-row items-center gap-0 md:gap-4 pt-20 pb-0 md:py-24 md:pt-32">
 
