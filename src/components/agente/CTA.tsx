@@ -70,6 +70,10 @@ function FormModal({ onClose }: { onClose: () => void }) {
       }
 
       setStatus("success");
+      if (typeof window !== "undefined") {
+        window.dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({ event: "lead" });
+      }
     } catch {
       setStatus("error");
     }

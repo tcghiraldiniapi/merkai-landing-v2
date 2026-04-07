@@ -109,10 +109,7 @@ export function DiagnosticoForm({
 
       setIsSuccess(true)
       window.dataLayer = window.dataLayer || []
-      window.dataLayer.push({
-        event: "lead",
-        form_name: "diagnostico",
-      })
+      window.dataLayer.push({ event: "lead" })
     } catch {
       setIsSuccess(true)
     } finally {
