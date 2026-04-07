@@ -101,13 +101,13 @@ export function Solucao() {
           </div>
 
           {/* ── Direita: sticky cards em desktop, stack normal em mobile ── */}
-          <ContainerScroll className="min-h-0 md:min-h-[360vh] space-y-4 md:space-y-5 pb-16 md:pt-12 md:pb-0">
+          <ContainerScroll className="min-h-0 md:min-h-[195vh] space-y-4 md:space-y-5 pb-16 md:pt-12 md:pb-0">
             {solucoes.map((s, i) => (
               <CardSticky
                 key={s.numero}
                 index={i + 2}
-                incrementY={12}
-                incrementZ={8}
+                incrementY={18}
+                incrementZ={10}
                 className="rounded-2xl border border-white/[0.07] bg-[#161616] overflow-hidden"
               >
                 {/* Linha de acento no topo */}
