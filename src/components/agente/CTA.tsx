@@ -55,16 +55,12 @@ function FormModal({ onClose }: { onClose: () => void }) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            body: {
-              nome: d1.nome,
-              email: d1.email,
-              telefone: d1.telefone,
-              cargo: d2.cargo,
-              nomeEmpresa: d2.empresa,
-              tamanhoEquipe: d2.tamanho,
-            },
-            webhookUrl:
-              "https://webhook.altimatics.com/webhook/merkai-formulario-landingpage",
+            nome: d1.nome,
+            email: d1.email,
+            telefone: d1.telefone,
+            cargo: d2.cargo,
+            nomeEmpresa: d2.empresa,
+            tamanhoEquipe: d2.tamanho,
           }),
         },
       );
