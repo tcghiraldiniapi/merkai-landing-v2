@@ -99,7 +99,23 @@ export function QuizSection() {
   const handleSubmit = async () => {
     if (!data.name.trim() || !data.email.trim()) return
     setSubmitting(true)
-    await new Promise((r) => setTimeout(r, 1200)) // TODO: real API call
+    try {
+      await fetch('https://webhook.altimatics.com/webhook/quizz-merkai-hire', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.name.trim(),
+          email: data.email.trim(),
+          phone: data.phone.trim(),
+          company: data.company.trim(),
+          website: data.website.trim(),
+          instagram: data.instagram.trim(),
+          source: 'quiz-hire-brazilian-marketing-specialist',
+        }),
+      })
+    } catch {
+      // silently continue — don't block the user on webhook failure
+    }
     setSubmitting(false)
     ;(window as any).dataLayer = (window as any).dataLayer || []
     ;(window as any).dataLayer.push({ event: 'lead' })
