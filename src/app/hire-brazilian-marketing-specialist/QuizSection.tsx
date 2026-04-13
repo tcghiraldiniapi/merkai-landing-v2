@@ -101,6 +101,8 @@ export function QuizSection() {
     setSubmitting(true)
     await new Promise((r) => setTimeout(r, 1200)) // TODO: real API call
     setSubmitting(false)
+    ;(window as any).dataLayer = (window as any).dataLayer || []
+    ;(window as any).dataLayer.push({ event: 'lead' })
     advance(step + 1)
   }
 
