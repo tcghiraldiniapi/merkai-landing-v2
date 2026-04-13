@@ -11,24 +11,20 @@ interface GradientWaveTextProps {
   children?: React.ReactNode;
   align?: Align;
   className?: string;
-
   speed?: number;
   paused?: boolean;
   delay?: number;
   repeat?: boolean;
   inView?: boolean;
   once?: boolean;
-
   radial?: boolean;
   bottomOffset?: number;
   bandGap?: number;
   bandCount?: number;
   customColors?: string[];
-
   onClick?: (e: React.MouseEvent) => void;
   onMouseEnter?: (e: React.MouseEvent) => void;
   onMouseLeave?: (e: React.MouseEvent) => void;
-
   ariaLabel?: string;
 }
 
@@ -36,24 +32,20 @@ export function GradientWaveText({
   children,
   align = "center",
   className,
-
   speed = 1,
   paused = false,
   delay = 0,
   repeat = false,
   inView = false,
   once = true,
-
   radial = true,
   bottomOffset = 20,
   bandGap = 4,
   bandCount = 8,
   customColors,
-
   onClick,
   onMouseEnter,
   onMouseLeave,
-
   ariaLabel,
 }: GradientWaveTextProps) {
   const elRef = useRef<HTMLDivElement | null>(null);
@@ -65,58 +57,52 @@ export function GradientWaveText({
   const startAtRef = useRef(0);
   const hasPlayedRef = useRef(false);
 
-  const [isInView, setIsInView] = useState(() => !inView);
-
+  const [isInView, setIsInView] = useState(!inView);
   const cycles = repeat ? 0 : 1;
 
   useEffect(() => {
-    if (!inView) return;
-
+    if (!inView) { setIsInView(true); return; }
     const node = elRef.current;
     if (!node) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (once && hasPlayedRef.current) return;
-            setIsInView(true);
-            hasPlayedRef.current = true;
-          } else if (!once) {
-            setIsInView(false);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (once && hasPlayedRef.current) return;
+          setIsInView(true);
+          hasPlayedRef.current = true;
+        } else if (!once) {
+          setIsInView(false);
+        }
+      });
+    }, { threshold: 0.1 });
     observer.observe(node);
     return () => observer.disconnect();
   }, [inView, once]);
 
-  const resolvedColors = useMemo(() => {
-    return customColors?.length ? customColors : defaultColors;
-  }, [customColors]);
+  const resolvedColors = useMemo(
+    () => (customColors?.length ? customColors : defaultColors),
+    [customColors]
+  );
 
   const stops = useMemo(() => {
     const arr: string[] = [];
-    const baseColor = "var(--gradient-wave-base, rgb(29,29,31))";
-    arr.push(`${baseColor} calc((var(--gi) + 0) * 1%)`);
+    const base = "var(--gradient-wave-base, rgb(136,136,136))";
+    arr.push(`${base} calc((var(--gi) + 0) * 1%)`);
     for (let i = 0; i < bandCount && i < resolvedColors.length * 2; i++) {
       const color = resolvedColors[i % resolvedColors.length];
       const offset = (i + 2) * bandGap;
       arr.push(`${color} calc((var(--gi) + ${offset}) * 1%)`);
     }
-    const endOffset = (bandCount + 2) * bandGap;
-    arr.push(`${baseColor} calc((var(--gi) + ${endOffset}) * 1%)`);
+    arr.push(`${base} calc((var(--gi) + ${(bandCount + 2) * bandGap}) * 1%)`);
     return arr.join(", ");
   }, [resolvedColors, bandGap, bandCount]);
 
-  const gradient = useMemo(() => {
-    return radial
+  const gradient = useMemo(
+    () => radial
       ? `radial-gradient(circle at 50% bottom, ${stops})`
-      : `linear-gradient(0deg, ${stops})`;
-  }, [radial, stops]);
+      : `linear-gradient(0deg, ${stops})`,
+    [radial, stops]
+  );
 
   useEffect(() => {
     const node = elRef.current;
@@ -125,10 +111,8 @@ export function GradientWaveText({
 
   useEffect(() => {
     if (!isInView) return;
-
     const node = elRef.current;
     if (!node) return;
-
     tRef.current = -25;
     cyclesDoneRef.current = 0;
     finishedRef.current = false;
@@ -140,32 +124,19 @@ export function GradientWaveText({
   useEffect(() => {
     const node = elRef.current;
     if (!node || !isInView) return;
-
     const RANGE = 200;
     let last = performance.now();
-
     const tick = (now: number) => {
       if (finishedRef.current) return;
-
       if (!startedRef.current) {
-        if (now >= startAtRef.current) {
-          startedRef.current = true;
-          last = now;
-        } else {
-          rafRef.current = requestAnimationFrame(tick);
-          return;
-        }
+        if (now >= startAtRef.current) { startedRef.current = true; last = now; }
+        else { rafRef.current = requestAnimationFrame(tick); return; }
       }
-
       const dt = Math.min(64, now - last);
       last = now;
-
-      const shouldAnimate = !paused;
-
-      if (shouldAnimate) {
+      if (!paused) {
         const increment = (dt * speed) / 16.6667;
         let next = tRef.current + increment;
-
         if (cycles === 0) {
           if (next >= RANGE) next = next % RANGE;
           tRef.current = next;
@@ -175,44 +146,32 @@ export function GradientWaveText({
             next -= RANGE;
             cyclesDoneRef.current += 1;
           }
-
           if (cyclesDoneRef.current >= cycles) {
-            tRef.current = RANGE;
             node.style.setProperty("--gi", String(RANGE));
             finishedRef.current = true;
             return;
-          } else {
-            tRef.current = next;
-            node.style.setProperty("--gi", String(next));
           }
+          tRef.current = next;
+          node.style.setProperty("--gi", String(next));
         }
       }
-
       rafRef.current = requestAnimationFrame(tick);
     };
-
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
   }, [speed, paused, cycles, isInView]);
 
   const justifyContent =
-    align === "left"
-      ? "flex-start"
-      : align === "right"
-        ? "flex-end"
-        : "center";
+    align === "left" ? "flex-start" : align === "right" ? "flex-end" : "center";
 
-  const handleClick = useCallback((e: React.MouseEvent) => { onClick?.(e); }, [onClick]);
-  const handleMouseEnter = useCallback((e: React.MouseEvent) => { onMouseEnter?.(e); }, [onMouseEnter]);
-  const handleMouseLeave = useCallback((e: React.MouseEvent) => { onMouseLeave?.(e); }, [onMouseLeave]);
+  const handleClick = useCallback((e: React.MouseEvent) => onClick?.(e), [onClick]);
+  const handleMouseEnter = useCallback((e: React.MouseEvent) => onMouseEnter?.(e), [onMouseEnter]);
+  const handleMouseLeave = useCallback((e: React.MouseEvent) => onMouseLeave?.(e), [onMouseLeave]);
 
   return (
     <div
       ref={elRef}
-      className={cn(
-        "flex w-full h-full items-center [--gradient-wave-base:rgb(29,29,31)] dark:[--gradient-wave-base:rgb(255,255,255)]",
-        className
-      )}
+      className={cn("flex items-center", className)}
       style={{ justifyContent, "--gi": -25 } as React.CSSProperties}
       aria-label={ariaLabel || undefined}
       role={ariaLabel ? "img" : undefined}
