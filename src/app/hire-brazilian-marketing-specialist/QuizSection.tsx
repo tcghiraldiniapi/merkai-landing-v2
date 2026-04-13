@@ -369,7 +369,7 @@ function UnderlineInput({
   placeholder, value, onChange, type = 'text', onEnter, inputRef,
 }: {
   placeholder: string; value: string; onChange: (v: string) => void
-  type?: string; onEnter?: () => void; inputRef?: React.RefObject<HTMLInputElement>
+  type?: string; onEnter?: () => void; inputRef?: React.RefObject<HTMLInputElement | null>
 }) {
   const handleKey = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && onEnter) onEnter()
